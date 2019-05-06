@@ -13,6 +13,7 @@ pipeline {
             steps {
             // this is the list of commands that will be run in the agent
               sh '''
+                apk update && apk add ca-certificates curl jq -y
                 echo "Building ${NG_BRANCH} Number ${BUILD_NUMBER} - home: ${HOME}"
                 echo "get the NGINX Plus keys"
                 curl -k -sS -H "X-Vault-Token:${TOKEN_RO}" ${VAULT_CREDS_PATH}/nginx-repo.key | jq -r .data.key > nginx/ssl/nginx-repo.key

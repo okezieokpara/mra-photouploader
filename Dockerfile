@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:stretch
 
 RUN useradd --create-home -s /bin/bash uploader
 
@@ -12,7 +12,7 @@ ARG NETWORK_ARG
 # - kubernetes (default)
 # - mesos
 # - local
-ENV USE_NGINX_PLUS=${USE_NGINX_PLUS_ARG:-true} \
+ENV USE_NGINX_PLUS=${USE_NGINX_PLUS_ARG:-false} \
     USE_VAULT=${USE_VAULT_ARG:-false} \
     CONTAINER_ENGINE=${CONTAINER_ENGINE_ARG:-kubernetes} \
 	NETWORK=${NETWORK_ARG:-fabric}
